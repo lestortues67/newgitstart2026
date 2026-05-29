@@ -27,6 +27,11 @@ def my_save_index_codebase():
         'received_data': data
     }), 200
 	
+# 29/05/2026
+@base.route('/file01')
+def my_file01():
+	return render_template ("index.html")
+
 
 @base.errorhandler(404)
 def page_not_found(e):
