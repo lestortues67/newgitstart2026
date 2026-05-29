@@ -1,5 +1,12 @@
-{% extends "MyBase.html" %} {% block title %}Index 008{% endblock %} {% block
-content %}
+{% extends "MyBase.html" %} {% block title %}Index 008{% endblock %} 
+{% block myHeadScript -%}
+{{ super() }}
+
+<!-- Un script à placer dans la partie 'head' de la page html sera placé ici par les pages qui étendent (extends) ce fichier-->
+<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
+{%- endblock myHeadScript %}
+
+{% block content %}
 <div class="container-fluid">
   <div class="row">
     <!-- Colonne gauche : 2/6 -->
@@ -13,9 +20,16 @@ content %}
     <!-- Colonne droite : 4/6 -->
     <div class="border p-3 col-12 col-md-8 col-lg-10">
       <!-- Note: 4/6 = 2/3 = col-md-8 -->
-      <div>Je suis à droite</div>
 
-      <h4>Serge ne fait plus d'erreurs depuis 2 minutes :D</h4>
+      <div id="editor">
+        <p>Hello World! you are in the QUILL editor </p>
+        <p>Some initial <strong>bold</strong> text</p>
+        <p><br /></p>
+      </div>
+
+
+      
+
     </div>
   </div>
 </div>
@@ -23,5 +37,13 @@ content %}
 {% endblock content %} {% block scripts %} {{ super() }}
 
 <script type="text/javascript" src=""></script>
+<script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
+
+<!-- Initialize Quill editor -->
+<script>
+  const quill = new Quill('#editor', {
+    theme: 'snow'
+  });
+</script>
 
 {% endblock scripts %}
