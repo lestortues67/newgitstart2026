@@ -29,7 +29,6 @@ def my_save_index_codebase():
 	
 # 29/05/2026
 @base.route('/file01')
-@login_required
 def my_file01():
 	return render_template ("index.html")
 
