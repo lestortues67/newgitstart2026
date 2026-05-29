@@ -44,7 +44,7 @@ def my_abc():
     # return 999render_template('index.html')
 
 # 29/05/2026
-@routes_bp.route("/gitpull", methods=['POST'])
+@routes_bp.route("/gitpull", methods=['GET'])
 def my_gitpull():
     print("REPO_PATH = ",REPO_PATH)
     print("Je vais te faire un git pull !!")
