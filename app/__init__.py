@@ -36,7 +36,8 @@ from app.main import main
 db = SQLAlchemy()
 
 def create_app():
-    app = Flask(__name__)
+    # app = Flask(__name__)
+    app = Flask(__name__, template_folder='blueprints/routes_blueprints/routes_templates')
 
     # Configuration
     app.config.from_object("app.config.Config")
@@ -70,15 +71,21 @@ def create_app():
         return User.query.get(int(user_id))
 
 
-    # Register the BLUEPRINTS to use
+    # Register the BLUEPRINTS to use 
 
-    from .auth import auth as auth_blueprint
+    from .blueprints.git_blueprint.git_blueprint import bp_git as git_blueprint
+    app.register_blueprint(git_blueprint)
+
+    from .blueprints.auth_blueprint.auth_blueprint import auth as auth_blueprint
     app.register_blueprint(auth_blueprint)
 
-    from .main import main as main_blueprint
-    app.register_blueprint(main_blueprint) 
+    from .blueprints.routes_blueprint.routes_blueprint import routes_bp as routes_blueprint 
+    app.register_blueprint(routes_blueprint)
 
-    app.register_blueprint(base, url_prefix="/")
+    # from .main import main as main_blueprint
+    # app.register_blueprint(main_blueprint) 
+
+    # app.register_blueprint(base, url_prefix="/")
     # pour le blueprint 'base' toutes les URL débutent par http://localhost:5000/ 
 
     app.register_blueprint(fr, url_prefix="/fr")

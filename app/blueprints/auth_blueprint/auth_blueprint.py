@@ -5,14 +5,20 @@ from flask_login import login_user, logout_user, login_required
 from werkzeug.security import generate_password_hash, check_password_hash
 # from .models import User
 from app.models.user import User
-from . import db
+from app import db
 from app.main import *
 
 print("app.main : ")
 print(main)
 
+# Blueprint(
+#     "auth",
+#     __name__,
+#     template_folder="templates",
+#     static_folder="static"
+# )
 
-auth = Blueprint('auth', __name__)
+auth = Blueprint('auth', __name__, template_folder="auth_templates", static_folder="auth_static")
 
 @auth.route('/login')
 def login():
@@ -83,3 +89,4 @@ def page_not_found(e):
 def internal_server_error(e):
     return render_template('500.html'), 500
     return ('<h1>Erreur serveur</h1>')
+

@@ -11,6 +11,11 @@ from flask import current_app
 
 main = Blueprint('main', __name__)
 
+@main.route('/rrr')
+def rrr():
+    return "Le nom du développeur est :"
+
+
 @main.route('/')
 def index():
     dev = current_app.config['NAME_AUTHOR_CODE']
