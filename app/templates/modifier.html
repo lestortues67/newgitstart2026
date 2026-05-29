@@ -1,0 +1,53 @@
+{% extends "MyBase.html" %} {% block content %}
+<div class="container mt-4">
+  <br />
+  <h2>Modifier l'élément</h2>
+
+  <div class="form-floating mb-3">
+    <input
+      type="text"
+      class="form-control"
+      id="input_titre"
+      placeholder="Titre"
+    />
+    <label for="input_titre">Titre</label>
+  </div>
+
+  <div class="form-floating mb-3">
+    <textarea
+      class="form-control"
+      id="input_contenu"
+      style="height: 150px"
+      placeholder="Contenu"
+    ></textarea>
+    <label for="input_contenu">Contenu / Description</label>
+  </div>
+
+  <button class="btn btn-primary" id="save">
+    Enregistrer les modifications
+  </button>
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %}
+  <div class="mt-4">
+    {% for category, message in messages %}
+    <div
+      class="alert alert-{{ category }} alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %} {% endwith %}
+</div>
+{% endblock content %} {% block scripts %} {{ super() }}
+<!-- Cette page depend de index.js -->
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock scripts %}

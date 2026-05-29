@@ -1,0 +1,122 @@
+{% extends "MyBase.html" %} {% block content %}
+<div class="container mt-4">
+  <h2>Popover Example</h2>
+
+  <div class="d-flex flex-row justify-content-around mb-5 mt-4">
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-bs-toggle="popover"
+      data-bs-placement="top"
+      data-bs-content="Top popover"
+    >
+      Popover on top
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-bs-toggle="popover"
+      data-bs-placement="right"
+      data-bs-content="Right popover"
+    >
+      Popover on right
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-bs-toggle="popover"
+      data-bs-placement="bottom"
+      data-bs-content="Bottom popover"
+    >
+      Popover on bottom
+    </button>
+    <button
+      type="button"
+      class="btn btn-secondary"
+      data-bs-toggle="popover"
+      data-bs-placement="left"
+      data-bs-content="Left popover"
+    >
+      Popover on left
+    </button>
+  </div>
+
+  <div class="alert alert-danger" role="alert">
+    Le button <i class="bi bi-plus"></i> ne fonctionne pas pour créer une
+    nouvelle page
+  </div>
+
+  <table class="table border align-middle">
+    <tbody id="table-body"></tbody>
+  </table>
+
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">
+            Titre de la modal
+          </h1>
+          <button
+            type="button"
+            class="btn-close"
+            data-bs-dismiss="modal"
+            aria-label="Fermer"
+          ></button>
+        </div>
+        <div class="modal-body">
+          Nouveau nom :
+          <input type="hidden" id="input_id_cache" />
+          <input class="form-control" type="text" id="input_renommer" />
+        </div>
+
+        <div class="modal-footer">
+          <button
+            type="button"
+            class="btn btn-secondary"
+            data-bs-dismiss="modal"
+          >
+            Fermer
+          </button>
+          <button
+            type="button"
+            class="btn btn-primary"
+            id="btn_enregistrer_renommer"
+          >
+            Enregistrer
+          </button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  {% with messages = get_flashed_messages(with_categories=true) %} {% if
+  messages %}
+  <div class="mt-4">
+    {% for category, message in messages %}
+    <div
+      class="alert alert-{{ category }} alert-dismissible fade show"
+      role="alert"
+    >
+      {{ message }}
+      <button
+        type="button"
+        class="btn-close"
+        data-bs-dismiss="alert"
+        aria-label="Close"
+      ></button>
+    </div>
+    {% endfor %}
+  </div>
+  {% endif %} {% endwith %}
+</div>
+{% endblock content %} {% block scripts %} {{ super() }}
+<script src="{{ url_for('static', filename='index.js') }}"></script>
+{% endblock scripts %}
