@@ -1,0 +1,46 @@
+{% extends "MyBase.html" %}
+{% block title %}Signup{% endblock %}
+
+{% block content %}
+<div class="container mt-5">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h3 class="text-center mb-4">Sign Up</h3>
+            <div class="card shadow-sm">
+                <div class="card-body">
+                    <form method="POST" action="/signup">
+                        <!-- Champ Email -->
+                        <div class="mb-3">
+                            <input class="form-control form-control-lg" type="email" name="email" placeholder="Email" autofocus required>
+                        </div>
+
+                        <!-- Champ Nom -->
+                        <div class="mb-3">
+                            <input class="form-control form-control-lg" type="text" name="name" placeholder="Name" required>
+                        </div>
+
+                        <!-- Champ Password -->
+                        <div class="mb-3">
+                            <input class="form-control form-control-lg" type="password" name="password" placeholder="Password" required>
+                        </div>
+
+                        <!-- Bouton Submit -->
+                        <div class="d-grid">
+                            <button type="submit" class="btn btn-info btn-lg text-white">Sign Up</button>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+
+<script type="text/javascript" src="static/js/codebase2026.js" ></script>
+
+
+{% endblock scripts %}
+

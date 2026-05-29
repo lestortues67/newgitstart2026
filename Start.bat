@@ -1,42 +1,38 @@
-
-:: /Fichier/Enregistrer sous 'encodage' -> choisir "UTF-8"
-
-
+chcp 65001
+@echo.
+@echo utf-8 pour bien afficher les caractères avec accent
+@echo.
 @echo.
 @echo 31/12/2025, bientôt 2026
 @echo.
 @echo Flask Framework - Tentative de démarrage du serveur
 @echo.
 
+@echo off
 
+IF DEFINED VIRTUAL_ENV (
+    echo Environnement virtuel detecte : %VIRTUAL_ENV%
+) ELSE (
+	:: 1. Vérifier si un VENV est actif
+	    echo Aucun environnement virtuel n'est actif.
+	    echo Creation de l'environnement virtuel...
+	    python -m venv venv
+    :: 2. Activer l'environnement (Utilisation de CALL obligatoire ici)
+		echo Activation de l'environnement virtuel......
+		call venv\Scripts\activate.bat
+	:: 3. Vérifier que l'activation a réussi (via la variable vue précédemment)
+		if defined VIRTUAL_ENV (
+		    echo [OK] Environnement actif : %VIRTUAL_ENV%
+		    :: Installer les dépendances si nécessaire
+		    python -m pip install -r requirements.txt
+		    rem pip install -r requirements.txt
+		) else (
+		    echo [ERREUR] L'activation a echoue.
+		    pause
+		    exit /b 1
+		)
+)
 
-
-
-:: ==============================================
-:: NOUVEAU 2026 : Environnement Virtuel (VENV)
-
-:: Création de l'Environnement Virtuel (VENV)
-python -m venv venv
-
-
-:: Activation de l'Environnement Virtuel (VENV)
-@echo Activation du VENV...
-call .\venv\Scripts\activate.bat
-@echo VENV est actif !!
-@echo.
-:: ==============================================
-
-
-:: NOUVEAU Fichier :  "requirements.txt"
-@echo création d'un nouveau fichier "requirements.txt" avec les dépendances actuellement installées.
-@echo Sauvegarde des dépendances dans "requirements.txt"
-call pip freeze > requirements.txt
-@echo pip freeze > requirements.txt
-:: ==============================================
-
-
-
-   
 @echo Choisir le fichier Python parmi les suivants : 
 @echo.   
 dir *.py
@@ -62,15 +58,15 @@ if exist %PythonFile% (
 	@echo.   
 	set FLASK_APP=%PythonFile%
 	set FLASK_ENV=development
-	flask run --host=0.0.0.0 --port=%myPort% --debug
+	set FLASK_DEBUG=1
+	python -m flask run --host=0.0.0.0 --port=%myPort% --debug
+	rem flask run --host=0.0.0.0 --port=%myPort% --debug
 
 ) else (
 	@echo Le fichier %PythonFile% n'existe PAS ! 
 )
 
 
-
-D:\Python39\MesDEv\Flask\Flask_codebase2026>flask --app app.py run --host=0.0.0.0 --debug
 
 
 

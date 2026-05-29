@@ -1,0 +1,64 @@
+{% extends "MyBase.html" %}
+{% block title %}Index{% endblock %}
+
+{% block content %}
+<div class=" container alert alert-warning" role="alert">
+  <b>BASE Index</b> <br>
+  <h1> C'est la page de BASE</h1>
+  
+</div>
+<div class="container">
+  <div id='editor'>
+    <!-- Ici c'est l'éditeur QUILL. Son contenu doit être 
+    stocké dans LOCAL STORAGE (BROUILLON) aussi longtemps que 
+    la sauvegarde vers le serveur Flask n'a pas réussie ! -->
+  </div>
+</div>
+
+<div class="container" id='editor'>
+  <button class="btn btn-primary" id="save">Save</button>
+</div>
+
+
+{% endblock content %}
+
+{% block scripts %}
+{{ super() }}
+
+<script type="module" src="static/js/main.js" ></script>
+
+<script type="application/javascript">
+  var quill = new Quill('#editor', {
+        theme: 'snow'
+    });
+
+    // 🔹 Charger le brouillon au démarrage
+    const savedContent = localStorage.getItem('quill_draft');
+    if (savedContent) {
+        quill.root.innerHTML = savedContent;
+    }
+
+    // 🔹 Sauvegarde automatique à chaque modification
+    quill.on('text-change', function() {
+        localStorage.setItem('quill_draft', quill.root.innerHTML);
+    });
+
+    // 🔹 Bouton SAVE (envoi vers Flask + nettoyage)
+    document.getElementById('save').addEventListener('click', function() {
+
+        const content = quill.root.innerHTML;
+        console.log('in the SAVE function code')
+        fetch('/save', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ content: content })
+        }).then(() => {
+            // supprimer le brouillon après sauvegarde serveur
+            localStorage.removeItem('quill_draft');
+        });
+    });
+</script>
+
+
+{% endblock scripts %}
+

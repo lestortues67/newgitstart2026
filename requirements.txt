@@ -1,1 +1,28 @@
-pip freeze 
+# === Core Framework ===
+Flask==3.1.0
+
+# === Database & ORM ===
+
+# Flask-SQLAlchemy : La version recommandée pour les nouveaux projets, avec le support complet de SQLAlchemy 2.x.
+# est la version 3.1.x
+Flask-SQLAlchemy==3.1.1
+SQLAlchemy==2.0.38
+
+# === Database & Migrations ===
+Flask-Alembic==3.2.0
+
+# === Authentication ===
+Flask-Login==0.6.3
+
+# === Développement & Utilitaires ===
+python-dotenv==1.0.1
+Flask-WTF==1.2.2                    # Formulaires (très recommandé)
+Werkzeug==3.1.3
+
+# === Optionnel mais souvent utile ===
+# gunicorn==23.0.0                   # Pour la production (WSGI)
+# psycopg2-binary==2.9.10            # PostgreSQL
+# pymysql==1.1.1                     # MySQL / MariaDB
+# flask-migrate==4.0.7               # Migrations Alembic
+# flask-bcrypt==1.0.1                # Hashage de mot de passe
+# email-validator==2.2.0             # Validation d'email
