@@ -9,7 +9,6 @@ def my_index_codebase():
 	return render_template ("index.html")
 
 @base.route('/test01')
-@login_required
 def my_test01():
 	return render_template ("/base/test01.html")
 	# return render_template ("/base/index_codebase.html")
