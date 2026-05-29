@@ -73,6 +73,10 @@ def my_gitpull():
             text=True,
             timeout=30
         )
+        print("success ? : ", result.returncode==0)
+        print("output : ", result.stdout)
+        print("error : ", result.stderr)
+        print("return_code : ", result.returncode)
         
         return jsonify({
             'success': result.returncode == 0,
