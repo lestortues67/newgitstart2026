@@ -13,25 +13,29 @@ super()
     <div class="border p-3 col-12 col-md-4 col-lg-2">
       <!-- Note: 2/6 = 1/3 = col-md-4 -->
       <div>Je suis à gauche</div>
-      <h1>C'est une bonne idée Serge !! </h1>
+      <h1>C'est une bonne idée Serge !!</h1>
     </div>
 
     <!-- Colonne droite : 4/6 -->
     <div class="border p-3 col-12 col-md-8 col-lg-10">
       <!-- Note: 4/6 = 2/3 = col-md-8 -->
+
       <div id="editor">
         <p>Hello World! you are in the QUILL editor </p>
         <p>Some initial <strong>bold</strong> text</p>
         <p><br /></p>
       </div>
 
+
+      <div>Je suis à droite</div>
+
+      <h4>Serge ne fait plus d'erreurs depuis 2 minutes :D</h4>
+
     </div>
   </div>
 </div>
 
-{% endblock content %} 
-
-{% block scripts %} {{ super() }}
+{% endblock content %} {% block scripts %} {{ super() }}
 
 <script type="text/javascript" src=""></script>
 <script src="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.js"></script>
@@ -44,4 +48,3 @@ super()
 </script>
 
 {% endblock scripts %}
-
