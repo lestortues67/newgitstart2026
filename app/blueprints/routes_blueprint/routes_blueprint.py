@@ -44,6 +44,19 @@ def my_abc():
     # return 999render_template('index.html')
 
 # 29/05/2026
+@routes_bp.route("/jjj", methods=['GET','POST'])
+def my_jjj():
+    print("REPO_PATH = ",REPO_PATH)
+    print("Je vais te faire un git pull !!")
+        
+    return jsonify({
+        'success': 'oui',
+        'output': 'non',
+        'error': 'oui',
+        })
+
+
+# 29/05/2026
 @routes_bp.route("/gitpull", methods=['GET','POST'])
 def my_gitpull():
     print("REPO_PATH = ",REPO_PATH)
