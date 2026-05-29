@@ -1,31 +1,20 @@
-{% extends "MyBase.html" %}
-{% block title %}Test 01{% endblock %}
+{% extends "MyBase.html" %} {% block title %}Test 01{% endblock %} {% block
+content %}
+<div class="container alert alert-warning" role="alert">
+  <div class="container"><b>{{comment}}</b></div>
 
-{% block content %}
-<div class=" container alert alert-warning" role="alert">
-  <div class=" container"><b>{{comment}}</b></div>
-  
-  UN TEST de fichier HTML <br>
+  UN TEST de fichier HTML <br />
 </div>
 
 <div class="container">
-  <h1 class="h1">
-    file 01
-  </h1>
-  <h2 class="h2" >
-  
-  </h2>
+  <h1 class="h1">file 01</h1>
+  <h2 class="h2"></h2>
 
+  Serge fait beaucoup d'erreurs aujourd'hui ...
 </div>
 
+{% endblock content %} {% block scripts %} {{ super() }}
 
-{% endblock content %}
-
-{% block scripts %}
-{{ super() }}
-
-<script type="text/javascript" src="static/js/codebase2026.js" ></script>
-
+<script type="text/javascript" src="static/js/codebase2026.js"></script>
 
 {% endblock scripts %}
-
