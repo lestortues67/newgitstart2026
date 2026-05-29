@@ -15,122 +15,108 @@ myHeadScript -%} {{ super() }}
 
       <h1>C'est une bonne idée Serge !!</h1>
 
-      <nav
-        class="bg-light text-dark p-3 d-flex flex-column position-fixed shadow-sm"
-        style="width: 25%; height: 100vh; left: 0; top: 0; overflow-y: auto"
+      <h5 class="mb-4 border-bottom pb-2">Menu</h5>
+
+      <ul class="nav flex-column gap-2 mb-4">
+        <li class="nav-item">
+          <a href="/" class="nav-link btn btn-light text-dark text-start w-100">
+            <i class="bi bi-house-door me-2"></i>Accueil
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/recent"
+            class="nav-link btn btn-light text-dark text-start w-100"
+          >
+            <i class="bi bi-clock-history me-2"></i>Récent
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/tags"
+            class="nav-link btn btn-light text-dark text-start w-100"
+          >
+            <i class="bi bi-hash"></i> Tags
+          </a>
+        </li>
+        <li class="nav-item">
+          <a
+            href="/creer"
+            class="nav-link btn btn-light text-dark text-start w-100"
+          >
+            <i class="bi bi-file-earmark-plus me-2"></i>Créer une nouvelle page
+          </a>
+        </li>
+      </ul>
+
+      <div class="px-2 mb-3">
+        <div class="input-group input-group-sm">
+          <span class="input-group-text bg-white border-end-0">
+            <i class="bi bi-search text-muted"></i>
+          </span>
+          <input
+            type="text"
+            id="searchInput"
+            class="form-control border-start-0 ps-0"
+            placeholder="Rechercher..."
+            aria-label="Rechercher"
+          />
+        </div>
+      </div>
+
+      <div class="d-flex justify-content-between align-items-center px-2 mb-2">
+        <span class="fw-bold">Fichiers</span>
+        <div class="dropdown">
+          <button
+            class="btn btn-sm border-dark p-0 px-1"
+            type="button"
+            id="btn_trier"
+            data-bs-toggle="dropdown"
+            style="font-size: 0.7rem"
+          >
+            Trier <i class="bi bi-chevron-down"></i>
+          </button>
+          <ul class="dropdown-menu shadow-sm" style="font-size: 0.8rem">
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-value="Affichage par défaut"
+                >Affichage par défaut</a
+              >
+            </li>
+            <li><hr class="dropdown-divider" /></li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-value="Date Récente -> date ancienne"
+                >Date Récente → date ancienne</a
+              >
+            </li>
+            <li>
+              <a
+                class="dropdown-item"
+                href="#"
+                data-value="Date ancienne -> date récente"
+                >Date ancienne → date récente</a
+              >
+            </li>
+            <li>
+              <a class="dropdown-item" href="#" data-value="Ordre alphabétique"
+                >Ordre alphabétique</a
+              >
+            </li>
+          </ul>
+        </div>
+      </div>
+
+      <table
+        class="table table-sm table-borderless align-middle w-100"
+        style="font-size: 0.85rem; table-layout: fixed"
       >
-        <h5 class="mb-4 border-bottom pb-2">Menu</h5>
-
-        <ul class="nav flex-column gap-2 mb-4">
-          <li class="nav-item">
-            <a
-              href="/"
-              class="nav-link btn btn-light text-dark text-start w-100"
-            >
-              <i class="bi bi-house-door me-2"></i>Accueil
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              href="/recent"
-              class="nav-link btn btn-light text-dark text-start w-100"
-            >
-              <i class="bi bi-clock-history me-2"></i>Récent
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              href="/tags"
-              class="nav-link btn btn-light text-dark text-start w-100"
-            >
-              <i class="bi bi-hash"></i> Tags
-            </a>
-          </li>
-          <li class="nav-item">
-            <a
-              href="/creer"
-              class="nav-link btn btn-light text-dark text-start w-100"
-            >
-              <i class="bi bi-file-earmark-plus me-2"></i>Créer une nouvelle
-              page
-            </a>
-          </li>
-        </ul>
-
-        <div class="px-2 mb-3">
-          <div class="input-group input-group-sm">
-            <span class="input-group-text bg-white border-end-0">
-              <i class="bi bi-search text-muted"></i>
-            </span>
-            <input
-              type="text"
-              id="searchInput"
-              class="form-control border-start-0 ps-0"
-              placeholder="Rechercher..."
-              aria-label="Rechercher"
-            />
-          </div>
-        </div>
-
-        <div
-          class="d-flex justify-content-between align-items-center px-2 mb-2"
-        >
-          <span class="fw-bold">Fichiers</span>
-          <div class="dropdown">
-            <button
-              class="btn btn-sm border-dark p-0 px-1"
-              type="button"
-              id="btn_trier"
-              data-bs-toggle="dropdown"
-              style="font-size: 0.7rem"
-            >
-              Trier <i class="bi bi-chevron-down"></i>
-            </button>
-            <ul class="dropdown-menu shadow-sm" style="font-size: 0.8rem">
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  data-value="Affichage par défaut"
-                  >Affichage par défaut</a
-                >
-              </li>
-              <li><hr class="dropdown-divider" /></li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  data-value="Date Récente -> date ancienne"
-                  >Date Récente → date ancienne</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  data-value="Date ancienne -> date récente"
-                  >Date ancienne → date récente</a
-                >
-              </li>
-              <li>
-                <a
-                  class="dropdown-item"
-                  href="#"
-                  data-value="Ordre alphabétique"
-                  >Ordre alphabétique</a
-                >
-              </li>
-            </ul>
-          </div>
-        </div>
-
-        <table
-          class="table table-sm table-borderless align-middle w-100"
-          style="font-size: 0.85rem; table-layout: fixed"
-        >
-          <tbody id="sidebar-file-list" style="min-height: 150px"></tbody>
-        </table>
-      </nav>
+        <tbody id="sidebar-file-list" style="min-height: 150px"></tbody>
+      </table>
 
       <div class="modal fade" id="folderModal" tabindex="-1" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered">
