@@ -4,9 +4,9 @@ from app.models.user import User
 
 routes_bp = Blueprint('routes_bp', __name__, template_folder="routes_templates", static_folder="routes_static")
 
-@routes_bp.route('/rrr')
-def rrr():
-    return "Le nom du développeur est rrr"
+@routes_bp.route('/file01')
+def my_file01():
+    return render_template('file01.html')
 
 @routes_bp.route("/")
 def my_index():
