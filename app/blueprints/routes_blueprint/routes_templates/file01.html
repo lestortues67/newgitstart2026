@@ -1,12 +1,12 @@
-{% extends "MyBase.html" %} {% block title %}Index 008{% endblock %} 
-{% block myHeadScript -%}
-{{ super() }}
+{% extends "MyBase.html" %} {% block title %}Index 008{% endblock %} {% block
+myHeadScript -%} {{ super() }}
 
 <!-- Un script à placer dans la partie 'head' de la page html sera placé ici par les pages qui étendent (extends) ce fichier-->
-<link href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css" rel="stylesheet" />
-{%- endblock myHeadScript %}
-
-{% block content %}
+<link
+  href="https://cdn.jsdelivr.net/npm/quill@2.0.3/dist/quill.snow.css"
+  rel="stylesheet"
+/>
+{%- endblock myHeadScript %} {% block content %}
 <div class="container-fluid">
   <div class="row">
     <!-- Colonne gauche : 2/6 -->
@@ -14,7 +14,7 @@
       <!-- Note: 2/6 = 1/3 = col-md-4 -->
       <div>Je suis à gauche</div>
       <h1>C'est une bonne idée Serge !!</h1>
-      <img src="static/gif_sardegna" />
+      <img src="static/gif_sardegna.gif" />
     </div>
 
     <!-- Colonne droite : 4/6 -->
@@ -22,14 +22,10 @@
       <!-- Note: 4/6 = 2/3 = col-md-8 -->
 
       <div id="editor">
-        <p>Hello World! you are in the QUILL editor </p>
+        <p>Hello World! you are in the QUILL editor</p>
         <p>Some initial <strong>bold</strong> text</p>
         <p><br /></p>
       </div>
-
-
-      
-
     </div>
   </div>
 </div>
@@ -41,8 +37,8 @@
 
 <!-- Initialize Quill editor -->
 <script>
-  const quill = new Quill('#editor', {
-    theme: 'snow'
+  const quill = new Quill("#editor", {
+    theme: "snow",
   });
 </script>
 
